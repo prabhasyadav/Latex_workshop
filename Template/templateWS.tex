@@ -1,0 +1,180 @@
+%This is preamble
+\documentclass[11pt, a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage [square]{natbib} % options: round, square, comma, authoryear, numbers
+\bibliographystyle{IEEEtranN} % plain, rsc, abbrvnat etc
+%\usepackage{lineno}
+
+%\usepackage{hyperref}
+%\pagestyle{headings}
+
+% These are front-matters
+\begin{document}
+
+\title{My First \LaTeX{} document}
+\author{P. K. Yadav$^1$\thanks{Corresponding Author: P.K. Yadav, \newline rs@pm.0.in},  K. Kumar$^2$, F. A. Faroque$^3$ \\\\ $^1$Manipal University Jaipur, $^2$PMO Office, Delhi, $3$CM Office Srinagar, J \& K}
+
+
+\maketitle
+
+%\linenumbers
+\begin{abstract}\label{abs}
+Why waste time check results in section (\ref{res})
+\end{abstract}
+
+
+% This is where the main body starts
+\section{Introduction}\label{Intro}
+
+Let us start with the list. I am learning \LaTeX{} because of the following:
+%\renewcommand\theenumi{\Roman{enumi}}
+%\renewcommand\labelenumi{[{\bfseries\theenumi}]}
+\begin{enumerate}
+\item I find it cool
+\item I find it hot
+\item I can not sense temperature
+\end{enumerate}
+
+A sum of square of $x$ and that of $y$ produces a square of $a$, mathematically, $x^2+y^2 = a^2$. We may represent it as:
+
+\begin{equation}
+f(x,y) = a^2
+\end{equation}
+
+
+\subsection{Actual Problem}\label{ActProb}
+The nested Lists.
+\renewcommand\labelitemi{$\square$}
+\renewcommand{\labelitemii}{$\diamond$}
+\begin{itemize}
+\item The {\tt itemize} label at the first level is a bullet.
+\begin{enumerate}
+\item The numbering is with Arabic numerals since this is ...
+\begin{itemize}
+\item This is the third level of the nesting, but the ...
+\begin{enumerate}
+\item And this is the fourth level of the overall ...
+\item Thus the numbering is with lower case letters ...
+\end{enumerate}
+\item The label at this level is a long dash.
+\end{itemize}
+\item Every list should contain at least two points.
+\end{enumerate}
+\item Blank lines ahead of an ...
+\end{itemize}
+
+\section{Results}\label{res}
+
+Let us insert a figure here. A standard scientific document has figure at top or at the bottom of the page.
+
+\begin{figure}[t]
+\includegraphics[scale=0.4, angle=123.7]{fig/logo} %\centering
+\caption{The first figure, Sharda Uni Logo.}
+\end{figure}
+
+
+\section{Discussions}
+
+\begin{figure}[b]
+\includegraphics[scale=0.2, width = 5cm, angle=270]{fig/logo} %\centering
+\caption{The first figure, Sharda Uni Logo.}
+\end{figure}
+
+\subsection{\LaTeX{} tables}
+The simplest table.
+
+\begin{table}[t]
+%\centering
+\begin{tabular}{lcr}
+ 1 & 2 & 3 \\
+  4 & 5 & 6 \\
+  7 & 8 & 9 \\
+\end{tabular}
+\caption{The first table}
+\end{table}
+
+\subsubsection{Case-Study I}
+
+Table with \verb|\cline{i-j}|
+\begin{table}[t]
+\begin{tabular}{|r|c|r|}
+  \hline
+  A & B & C\\
+  \hline
+  2 & 4 & Y\\ \cline{2-3}
+   & 8 & N  \\
+  \hline \hline
+  8 &  7 & Y \\
+  \hline
+\end{tabular}
+\caption{More table}
+\end{table}
+\subsubsection{A slightly complex table}
+
+Merging several columns, we follow \cite{lamport94}.
+\begin{table}[t]
+\begin{tabular}{ |l|l| }
+  \hline
+  \multicolumn{2}{|c|}{Team sheet} \\
+  \hline
+  C  & M. Dhoni \\
+  BM & V. Kohli \\
+  BM & R. Sharma \\
+  BR & Z. Khan \\
+  BR & I. Sharma \\
+  \hline
+\end{tabular}
+\caption{A slightly complex table}
+\end{table}
+\subsubsection{Colorful table}
+
+\begin{center}
+\begin{table}[h]
+\rowcolors{1}{green}{pink}
+\begin{tabular}{lll}
+odd     & odd   & odd \\
+even    & even  & even\\
+odd     & odd   & odd \\
+even    & even  & even\\
+\end{tabular}
+\caption{A colorful table}
+\end{table}
+\end{center}
+
+
+\section{Conclusions}
+\subsection{Future works}
+
+
+
+% These are end-matters
+
+\section{Appendices}
+\section{Acknowledgements} %* makes puts off the section number
+We appreciate the great work of \cite{lamport94}, which let us write our work more beautifully. Of course we also thank also Prof. Knuth for his grand work \cite[p.~215]{knuth2014}.
+
+
+%\begin{thebibliography}{99}
+%\bibitem{lamport94}
+%       Leslie Lamport,
+%       \emph{\LaTeX{}: A Document Preparation System}.
+%       Addison Wesley, Massachusetts,
+%       2nd Edition,
+%       1994.
+%       
+%\bibitem{knuth2014} 
+%\emph{nuth, Donald Ervin. ``The Art of Computer Programming (TAOCP)"}. Retrieved February 01, 2014.
+%\end{thebibliography}
+
+\begin{thebibliography}{10}
+\bibitem[Leslie(1985)]{lamport94} Leslie Lamport, 1985. \LaTeX{}-A Document Preparation...
+\bibitem[Donale(2000)]{knuth2014}Donald E. Knuth, 1989. Typesetting Concrete Mathematics,...
+\bibitem[Ronald, Donald and Ore(1989)]{rondon89}Ronald L. Graham, ...
+\end{thebibliography}
+
+
+\end{document}
