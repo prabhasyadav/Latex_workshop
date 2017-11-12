@@ -1,0 +1,611 @@
+\documentclass[presentation]{beamer}
+
+\usetheme{Madrid}
+\setbeamertemplate{navigation symbols}{}
+\usecolortheme{beaver}
+\usepackage{textpos}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color, colortbl}
+\usepackage{multirow} 
+\usepackage[scale=1.5]{ccicons}
+\usepackage{caption}
+%\usepackage[ddmmyyyy]{datetime}
+\usepackage{ragged2e}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true,     
+}
+\usepackage[T1]{fontenc}
+\usepackage{twcal}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\definecolor{gold}{rgb}{0.85,.66,0}
+ \definecolor{khaki}{rgb}{0.941176,0.901961,0.549020}
+\definecolor{saffron}{rgb}{0.96, 0.77, 0.19}
+\definecolor{sand}{rgb}{0.76, 0.7, 0.5}
+\definecolor{ablue}{rgb}{0.94, 0.97, 1.0}
+\definecolor{cgreen}{rgb}{0.0, 0.42, 0.24}
+\setbeamercolor{bgcolor}{fg=black,bg=ablue}
+
+
+\newenvironment<>{varblock}[2][.9\textwidth]{%
+  \setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}}
+
+
+\title[Workshop \LaTeX{}]{\textbf{Workshop on Document typesetting and Processing using \LaTeX}}
+\author[\ccby{}  P. K. Yadav \& K. Kumar]{\vspace{-0.3cm}\textbf{Session: Tables in \LaTeX}}
+\institute[SET/CE]{\href{http://www.texample.net/tikz/examples/rotated-polygons/}{
+\includegraphics[scale=0.25]{fig/cover}}\centering\\
+\textit{The rotated square}
+\begin{flushleft}
+Presented by: \textbf{P. K. Yadav \& K. Kumar} \\
+\hspace{1.85cm}\textbf{Department of Civil Engineering} \hspace{2.5 cm} \today
+\end{flushleft}
+}
+\date{\today}
+
+\begin{document}
+
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}
+\begin{textblock*}{50cm}(0\textwidth,0cm)
+\includegraphics[width=4cm]{fig/logofinal}
+\end{textblock*}
+\vspace{1.2cm}
+
+
+  \titlepage
+  
+  
+\end{frame}
+}
+\addtocounter{framenumber}{-1}
+
+%\logo{\includegraphics[width=1.5cm,height=1.5cm,keepaspectratio]{fig/logo}}
+
+
+
+\addtobeamertemplate{frametitle}{}{%
+\begin{textblock*}{500mm}(.93\textwidth,-0.95cm)
+\includegraphics[width=0.9cm]{fig/mujlogo4}
+\end{textblock*}}
+
+\begin{frame}{Motivation}
+
+
+
+\begin{enumerate}
+\justifying
+
+\item Tables are a common feature in academic writing, often used to summarise research results.\\
+\vspace{0.3cm} 
+
+\item Mastering the art of table construction in LaTeX is therefore necessary to produce quality document.\\
+\vspace{0.3cm} 
+
+\item LaTeX is not a spreadsheet, so designing a table may be time taking in the beginning.\\
+\vspace{0.3cm} 
+
+\item Customization of table can be done with several packages, e.g. \textcolor{red}{tabularx, tabu, colortbl, booktab}tabularx, and several others. 
+
+\end{enumerate}
+
+
+
+
+
+
+%\begin{block}{Block title}
+%Hello
+%\end{block}
+%
+%\begin{varblock}[7cm]{New block}
+%  Variable width, here 4cm
+%\end{varblock}
+
+\end{frame}
+
+\section{Table Environment}
+
+\begin{frame}{The Table environment I}
+
+Very similar to the figure environment.\\
+\vspace{0.3cm}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+
+\begin{varblock}[7cm]{\textbf{The Table Environment}}
+
+\textcolor{red}{$\backslash$begin\{table\}[Position]}\\
+\textcolor{red}{$\backslash$begin\{tabular\}[Position]\{table spec\}}\\
+\begin{center}
+Table rows separated by \textcolor{red}{\textbf{\&}} ...
+\end{center}
+\textcolor{red}{$\backslash$caption\{table\}}
+\textcolor{red}{$\backslash$end\{tabular\}[Position][pos]\{table spec\}}\\
+\textcolor{red}{$\backslash$end\{table\}[Position]}
+
+\end{varblock}
+\end{column}
+\end{columns}
+
+\vspace{0.8cm}
+%\begin{center}
+%~
+%    \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=3cm]{bgcolor}
+%      That is a good one
+%    \end{beamercolorbox}
+%~
+%\end{center}
+
+We will learn about all of these codes.
+
+\end{frame}
+
+\begin{frame}{The Table Environment II}
+
+Next the \fcolorbox{gold}{ablue}{\textcolor{red}{$\backslash$begin\{table\}[Position]}}\\
+\vspace{0.3cm}
+
+The Position specifier in the table environment is exactly the same as was in the figure environment.\\
+
+\vspace{0.3cm}
+
+ \begin{columns}
+ \begin{column}{0.5\textwidth}
+ 
+ \begin{varblock}[7cm]{\textbf{Position specification}}
+ 
+\begin{tabular}{|l|l|}
+\hline 
+\textcolor{red}{\textbf{h}} & where the table is declared (\textcolor{red}{h}ere)\\
+\hline\hline
+\textcolor{red}{\textbf{t}} & at the \textcolor{red}{t}op of the page\\
+\hline\hline
+\textcolor{red}{\textbf{b}} & at the \textcolor{red}{b}ottom of the page\\
+\hline\hline
+\textcolor{red}{\textbf{p}} & on the dedicate \textcolor{red}{p}age\\
+\hline\hline
+\textcolor{red}{\textbf{!}} & override the default float restrictions\\
+\hline
+
+\end{tabular}
+ 
+ \end{varblock}
+ \end{column}
+ \end{columns}
+
+\vspace{0.5cm}
+The combination of position specifier, e.g. \textbf{htb}, can also be used.
+
+\end{frame}
+
+
+\begin{frame}{The Table Environment III}
+
+We start with \fcolorbox{gold}{ablue}{\textcolor{red}{$\backslash$begin\{tabular\}[Position]\{table spec.\}}}\\
+\vspace{0.2cm}
+
+Here we have the \textbf{tabular} environment that requires \textbf{table specs} argument and an optional argument \textbf{position}.\\
+
+\vspace{0.2cm}
+
+The table spec. specifier identifies the number of column and the format of the separation between columns.
+\\
+
+\vspace{0.2cm}
+ \begin{columns}
+ \begin{column}{0.5\textwidth}
+ 
+ \begin{varblock}[10.3cm]{\textbf{The table spec.}}
+ 
+\begin{tabular}{|l|l|}
+\hline 
+\textcolor{red}{\textbf{l}} &  \textcolor{red}{l}eft-justified column\\
+\hline\hline
+\textcolor{red}{\textbf{c}} & \textcolor{red}{c}entered column \\
+\hline\hline
+\textcolor{red}{\textbf{r}} & \textcolor{red}{r}ight-justified column\\
+\hline\hline
+\textcolor{red}{\textbf{p\{`width'\}}} & specified column width\\
+\hline\hline
+\textcolor{red}{\textbf{|}} & vertical line separation between columns\\
+\hline\hline
+\textcolor{red}{\textbf{||}} & double vertical line separation between columns\\
+\hline
+
+\end{tabular}
+ 
+ \end{varblock}
+ \end{column}
+ \end{columns}
+
+\vspace{0.5cm}
+The combination of position specifier, e.g. \textbf{htb}, can also be used.
+
+\end{frame}
+
+\begin{frame}{The Table Environment IV }
+
+The \textbf{POSITION} specifier of the Tabular environment is only rarely used. We focus on the \fcolorbox{gold}{ablue}{\textcolor{red}{specifications required within the table body}}.\\
+\vspace{0.2cm}
+
+ \begin{columns}
+ \begin{column}{0.5\textwidth}
+ 
+ \begin{varblock}[11cm]{\textbf{Table row/columns specifier}}
+\small
+\begin{tabular}{|l|l|}
+\hline 
+\textcolor{red}{\textbf{\&}} &  column separator\\
+\hline\hline
+\textcolor{red}{\textbf{$\backslash\backslash$}} & start new row \\
+\hline\hline
+\textcolor{red}{\textbf{$\backslash$hline}} & horizontal line\\
+\hline\hline
+\textcolor{red}{\textbf{$\backslash$newline}} & start a new line within a cell \\
+\hline\hline
+\textcolor{red}{\textbf{$\backslash$cline\{i-j\}}} & partial horizontal line from column $i$ and  end of column $j$\\
+\hline
+
+\end{tabular}
+ 
+ \end{varblock}
+ \end{column}
+ \end{columns}
+
+\vspace{0.4cm}
+
+We will use these specifiers in examples.
+
+\end{frame}
+
+
+\section{Examples}
+\begin{frame}[fragile]{Examples of \LaTeX{} tables I }
+
+
+
+
+\justifying
+
+Lastly the \textbf{caption} code, which is exactly as it was with Figure Environment, only that \textcolor{red}{ \textbf{$\backslash$caption\{ Table Title\}}} is placed after the $\backslash$end\{ tabular\}. \\ 
+
+
+ \begin{columns}
+ \begin{column}{0.5\textwidth}
+
+\begin{center}
+
+    \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=6cm]{bgcolor}
+      \begin{verbatim}
+     \begin{table}[b]
+     %\centering
+     \begin{tabular}{lcr}
+      1 & 2 & 3 \\
+       4 & 5 & 6 \\
+       7 & 8 & 9 \\
+     \end{tabular}
+     \caption{The first table}
+     \end{table}
+           \end{verbatim}
+    \end{beamercolorbox}
+
+\end{center}
+ \end{column}
+ \hfill
+  \begin{column}{0.3\textwidth}
+  
+  \begin{varblock}[3.5cm]{\textbf{A Simple Table}}
+  
+ \begin{table}[b]
+ %\centering
+ \begin{tabular}{lcr}
+  1 & 2 & 3 \\
+   4 & 5 & 6 \\
+   7 & 8 & 9 \\
+ \end{tabular}
+ \caption{The first table}
+  \vspace{-0.5cm}
+ \end{table}
+ 
+   \end{varblock}
+  \end{column}
+
+ \end{columns}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Examples of \LaTeX{} tables II}
+
+
+
+
+\justifying
+
+\textbf{Next we add vertical and horizontal lines to the table}. \\ 
+
+
+ \begin{columns}
+ \begin{column}{0.5\textwidth}
+
+\begin{center}
+\small
+    \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=6cm]{bgcolor}
+      \begin{verbatim}
+     \begin{table}[b]
+     %\centering
+     \begin{tabular}{|l||c|r|}
+     \hline
+      A & B & C \\
+      \hline\hline
+       1 & 2 & 3 \\
+       \hline
+       7 & 8 & 9 \\
+       \hline
+     \end{tabular}
+     \caption{The first table}
+     \end{table}
+           \end{verbatim}
+    \end{beamercolorbox}
+
+\end{center}
+ \end{column}
+ \hfill
+  \begin{column}{0.3\textwidth}
+  
+  \begin{varblock}[3.5cm]{\textbf{A Simple Table}}
+  
+ \begin{table}[b]
+ %\centering
+ \begin{tabular}{|l||c|r|}
+ \hline
+  A & B & C \\
+   \hline \hline
+   1 & 2 & 3 \\
+    \hline
+   7 & 8 & 9 \\
+    \hline
+ \end{tabular}
+ \caption{A simple table}
+ \end{table}
+ \vspace{-0.5cm}
+   \end{varblock}
+  \end{column}
+
+ \end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]{Examples of \LaTeX{} tables III}
+
+
+
+
+\justifying
+Next we use \verb|\cline{i-j}|. In order to create an empty row we simply \textcolor{red}{\&} to all columns.\\
+
+
+ \begin{columns}
+ \begin{column}{0.5\textwidth}
+
+\begin{center}
+\small
+    \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=6cm]{bgcolor}
+      \begin{verbatim}
+     \begin{table}[t]
+     \begin{tabular}{|r|c|r|}
+       \hline
+       A & B & C\\
+       \hline
+       2 & 4 & Y\\ \cline{2-3}
+        & 8 & N  \\
+       \hline \hline
+       8 &  7 & Y \\
+       \hline
+     \end{tabular}
+     \caption{More table}
+     \end{table}
+           \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+\end{center}
+ \end{column}
+ \hfill
+  \begin{column}{0.3\textwidth}
+  
+  \begin{varblock}[3.5cm]{\textbf{More Table}}
+  
+\begin{table}[b]
+\begin{tabular}{|r|c|r|}
+  \hline
+  A & B & C\\
+  \hline
+  2 & 4 & Y\\ \cline{2-3}
+   & 8 & N  \\
+  \hline \hline
+  8 &  7 & Y \\
+  \hline
+\end{tabular}
+\caption{More table}
+\end{table}
+ \vspace{-0.5cm}
+   \end{varblock}
+  \end{column}
+
+ \end{columns}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Examples of \LaTeX{} tables IV}
+
+
+
+
+\justifying
+Multicolumn table can be created using specifier\\ \verb|\multicolumn{'num_cols'}{'alignment'}{'contents'}|\\
+\verb|num_cols| is the number of subsequent columns to merge;\\ alignment is \verb| l, c, r, |, and \verb|content| is the actual data.\\
+
+
+ \begin{columns}
+ \begin{column}{0.5\textwidth}
+
+\begin{center}
+\scriptsize
+    \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=6cm]{bgcolor}
+    \vspace{-0.5cm}
+      \begin{verbatim}
+    \begin{table}[h]
+    \begin{tabular}{ |l|l| }
+      \hline
+      \multicolumn{2}{|c|}{Team sheet} \\
+      \hline
+      C  & M. Dhoni \\
+      BM & V. Kohli \\
+      BR & Z. Khan \\
+      BR & I. Sharma \\
+      \hline
+    \end{tabular}
+    \caption{A slightly complex table}
+    \end{table}
+           \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+\end{center}
+ \end{column}
+ \hfill
+  \begin{column}{0.3\textwidth}
+  
+  \begin{varblock}[3.5cm]{\textbf{More Table}}
+  
+\begin{table}[h]
+    \begin{tabular}{ |l|l| }
+      \hline
+      \multicolumn{2}{|c|}{Team sheet} \\
+      \hline
+      C  & M. Dhoni \\
+      BM & V. Kohli \\
+      BR & Z. Khan \\
+      BR & I. Sharma \\
+      \hline
+    \end{tabular}
+    \caption{A slightly complex table}
+    \end{table}
+ \vspace{-0.5cm}
+   \end{varblock}
+  \end{column}
+
+ \end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]{Examples of \LaTeX{} tables V}
+
+
+
+
+\justifying
+Colorful table can first by adding \verb|\usepackage[table]{xcolor}| in the preamble, and then using command: \\
+\verb|\rowcolors{``starting row''}{``odd color''}{``even color''} |\\
+
+
+ \begin{columns}
+ \begin{column}{0.5\textwidth}
+
+\begin{center}
+    \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=6cm]{bgcolor}
+    \vspace{-0.5cm}
+      \begin{verbatim}
+    \begin{table}[h]
+    \rowcolors{1}{green}{pink}
+    \begin{tabular}{lll}
+    odd     & odd   & odd \\
+    even    & even  & even\\
+    odd     & odd   & odd \\
+    even    & even  & even\\
+    \end{tabular}
+    \caption{A colorful table}
+    \end{table}
+           \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+\end{center}
+ \end{column}
+ \hfill
+  \begin{column}{0.3\textwidth}
+  
+  \begin{varblock}[3.5cm]{\textbf{More Table}}
+  
+\begin{table}[h]
+\begin{tabular}{lll}
+\rowcolor{green}
+odd     & odd   & odd \\
+\rowcolor{pink}
+even    & even  & even\\
+odd     & odd   & odd \\
+\rowcolor{green}
+even    & even  & even\\
+\end{tabular}
+\caption{A colorful table}
+\end{table}
+ \vspace{-0.5cm}
+   \end{varblock}
+  \end{column}
+
+ \end{columns}
+
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+
+\item Tables in \LaTeX{} requires practice.
+\vspace{0.3cm}
+\item There exist several free software that let you convert spreadsheet to \LaTeX{} table, e.g. excel2latex, matrix2latex. Details can be found here: \href{http://en.wikibooks.org/wiki/LaTeX/Tables}{Using Spreadsheet}.
+\vspace{0.3cm}
+\item There are several packages that facilitates the design of complex tables, e.g. tables spanning several pages, footnotes in table, margin formatting. More details can be found \href{http://en.wikibooks.org/wiki/LaTeX/Tables}{here} and \href{http://www.tug.org/tutorials/tugindia/}{here}.
+\vspace{0.3cm}
+
+\item A handy tool that can be used to make tables can be found \href{http://authortools.aas.org/LATEX/make-latex.html}{here}, \href{http://www.ctan.org/pkg/latable}{here} and \href{http://truben.no/latex/table/}{here (online)}. 
+
+
+\end{itemize}
+\end{frame}
+
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}{ \textbf{Next $\ldots$,}}
+\pagestyle{plain}
+\Huge
+
+\textbf{Equations, Bibliography... further improve our \LaTeX{} document.}
+
+
+\end{frame}
+
+}
+
+
+\end{document}

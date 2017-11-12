@@ -1,0 +1,56 @@
+\frametitle{Examples of \LaTeX {} tables V}
+
+
+
+
+\justifying
+Colorful table can first by adding \verb|\usepackage[table]{xcolor}| in the preamble, and then using command: \\
+\verb|\rowcolors{``starting row''}{``odd color''}{``even color''} |\\
+
+
+ \begin{columns}
+ \begin{column}{0.5\textwidth}
+
+\begin{center}
+    \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=6cm]{bgcolor}
+    \vspace{-0.5cm}
+      \begin{verbatim}
+    \begin{table}[h]
+    \rowcolors{1}{green}{pink}
+    \begin{tabular}{lll}
+    odd     & odd   & odd \\
+    even    & even  & even\\
+    odd     & odd   & odd \\
+    even    & even  & even\\
+    \end{tabular}
+    \caption{A colorful table}
+    \end{table}
+           \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+\end{center}
+ \end{column}
+ \hfill
+  \begin{column}{0.3\textwidth}
+
+  \begin{varblock}[3.5cm]{\textbf{More Table}}
+
+\begin{table}[h]
+\begin{tabular}{lll}
+\rowcolor{green}
+odd     & odd   & odd \\
+\rowcolor{pink}
+even    & even  & even\\
+odd     & odd   & odd \\
+\rowcolor{green}
+even    & even  & even\\
+\end{tabular}
+\caption{A colorful table}
+\end{table}
+ \vspace{-0.5cm}
+   \end{varblock}
+  \end{column}
+
+ \end{columns}
+
