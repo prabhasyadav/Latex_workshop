@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Motivation}{2}{0}{1}
+\beamer@sectionintoc {2}{thebibliography Environment}{3}{0}{2}
+\beamer@sectionintoc {3}{The natbib package}{6}{0}{3}
+\beamer@sectionintoc {4}{Final Notes}{9}{0}{4}

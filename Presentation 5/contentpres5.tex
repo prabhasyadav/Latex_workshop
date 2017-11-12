@@ -1,0 +1,255 @@
+% DO NOT COMPILE THIS FILE DIRECTLY!
+% This is included by the other .tex files.
+
+\begin{frame}[t,plain]
+\titlepage
+\end{frame}
+
+\section{Motivation}
+\begin{frame}[t]{\textbf{Motivation}}
+\vspace{0.2cm}
+\justifying
+
+Standard documents require proper referencing and bibliography. Key points with \LaTeX{} bibliography management are:
+\vspace{0.2cm}
+\begin{enumerate}
+
+\item Very flexible bibliography styling.\\
+\vspace{0.2cm}
+\item Very simple conversion between different bibliography style.\\
+\vspace{0.2cm}
+\item Flexible cross-referencing and hyper-linking.\\
+\vspace{0.2cm}
+\item Possibility to manage references material using independent tools e.g. Endnote$^\circledR$, Bibtex.\\
+\vspace{0.2cm}
+
+We will explore first a basic referencing in \LaTeX{} and follow it up with a very flexible NATBIB package. 
+\end{enumerate}
+
+\end{frame}
+
+\section{thebibliography Environment}
+\begin{frame}[t,fragile]{\textbf{thebibliography Environment I}}
+
+
+\justifying
+Referencing involves two information: The \textbf{Citation} and the detail of the citation- the \textbf{complete reference information}.\\ We with start with the latter.
+\vspace{0.1cm}
+
+The environment for providing reference information is: \textcolor{red}{$\backslash$begin\{ thebibliography\}\{options\}}. A typical code is:\\
+\vspace{0.2cm}
+\small
+\begin{beamercolorbox}[ rounded=true, center, shadow=true,wd=9.5cm]{bgcolor}
+      \vspace{-0.5cm}
+\begin{verbatim}
+     \begin{thebibliography}{9}
+   
+     \bibitem{lamport94}
+       Leslie Lamport,
+       \emph{\LaTeX: A Document Preparation System}.
+       Addison Wesley, Massachusetts,
+       2nd Edition,
+       1994.
+     \end{thebibliography}
+ \end{verbatim}
+ \vspace{-0.7cm}
+   \end{beamercolorbox}
+
+
+\end{frame}
+
+\begin{frame}[t,fragile]{\textbf{thebibliography Environment II}}
+
+\justifying
+
+
+The \textbf{options} in \textcolor{red}{$\backslash$begin\{ thebibliography\}\{options\}} refers to the width of the widest label in the bibliography. We use the value $\mathbf{1-9}$ if the document has up to \textbf{9} references, and\textbf{ any two digit number}, e.g. 56, if the document has \textbf{9 and 99} references.\\
+\vspace{0.3cm}
+
+In \textcolor{red}{$\backslash$bibitem\{lamport94\}}, $\backslash$bibitem specifier which identifies \textbf{``lamport94''} as the citation. The identifier can be in any format,\\
+\vspace{0.3cm}
+
+Finally, we use \textcolor{red}{$\backslash$cite[options]\{lamport94\}} to cite in the text. In \textbf{options} we can add any text information that we want to appear in the citation, e.g. [p. 215], referring to page number 215 of the Lamport book published in 94.
+
+\end{frame}
+
+\begin{frame}[t,fragile]{\textbf{thebibliography Environment III}}
+
+
+Lets us look at an example.
+
+\scriptsize
+\begin{varblock}[9cm]{\textbf{Refernce Citing Example}}
+\vspace{-0.3cm}
+\begin{verbatim}
+We appreciate the great work in \cite{knuth2014}, 
+which let us write our work more beautifully
+\cite[p. 200]{lamport94}. 
+\end{verbatim}
+\vspace{-0.3cm}
+\end{varblock}
+
+
+\textbf{This will result to, assuming the 2 references information:}
+
+\begin{varblock}[11cm]{\textbf{Output}}
+\vspace{-0.3cm}
+\begin{verbatim}
+We appreciate the great work in [2], which let us 
+write our work more beautifully[1, p. 200] .
+
+References
+[1] Leslie Lamport, \LaTeX: A Document Preparation System. Addison Wesley, 
+Massachusetts, 2nd Edition, 1994.
+[2] nuth, Donald Ervin. \The Art of Computer Programming (TAOCP)".
+Retrieved February 01, 2014.
+\end{verbatim}
+\vspace{-0.3cm}
+\end{varblock}
+
+
+\end{frame}
+
+\section{The natbib package}
+\begin{frame}[t,fragile]{\textbf{\textbf{The natbib package}}}
+
+
+The natbib package extends the citation in \LaTeX{} writing, catering to the requirements of most of the scientific literature. The basic commands are:\\
+\vspace{0.2cm}
+
+In the preamble (before the $\backslash$begin\{document\}) command we add:\\
+\vspace{0.2cm}
+
+\begin{enumerate}
+\item \textcolor{red}{$\backslash$usepackage[options]\{natbib\}}. Options are usually- authoryear, square, comma, numbers etc. More will be defined later.\\
+\vspace{0.2cm}
+
+ \item \textcolor{red}{$\backslash$bibliographystyle\{styles\}}. Styles are provided by publishers e.g. rsc, nature, IEEEtranN, etc., but can also be customized. The file type is ``.bst''. 
+ 
+\end{enumerate}
+
+natbib also extends the \textcolor{red}{$\backslash$cite} command, we see how. 
+\end{frame}
+
+
+\begin{frame}[t,fragile]{\textbf{\textbf{The natbib package}}}
+
+
+Several ways to cite using natbib package:\\
+\vspace{0.3cm}
+
+
+\small
+\begin{tabular}{lcl}
+\hline\rowcolor{gray!10}
+\textbf{Citation Command} &  & \textbf{Output}  \\
+\hline
+ \rowcolor{almond}
+$\backslash$citet\{goossens93\} & $\Rightarrow$ & Goossens et al. (1993)  \\
+
+\rowcolor{ablue}
+$\backslash$citep\{goossens93\} & $\Rightarrow$ & (Goossens et al., 1993)   \\
+
+ \rowcolor{almond}
+$\backslash$citet$\ast$\{goossens93\} & $\Rightarrow$ & Goossens, Mittlebach, and Samarin (1993) \\ 
+ 
+\rowcolor{ablue}
+$\backslash$citep$\ast$\{goossens93\} & $\Rightarrow$ & (Goossens, Mittlebach, and Samarin, 1993) \\ 
+
+\rowcolor{almond}
+$\backslash$citealt\{goossens93\} & $\Rightarrow$ & Goossens et al. 1993   \\
+
+\rowcolor{ablue}
+$\backslash$citealp\{goossens93\} & $\Rightarrow$ & Goossens et al., 1993   \\
+ 
+\rowcolor{almond}
+$\backslash$citet{ale91,rav92} & $\Rightarrow$ & Alex et al. (1991); Ravi et al. (1992)   \\ 
+
+\rowcolor{ablue}
+$\backslash$citep[see][chap.~4]{ale91} & $\Rightarrow$ & [see Alex 1991, chap. 4]  \\\hline
+\end{tabular}\\
+\vspace{0.3cm}
+
+Finally, we re-visit the citation information input using natbib package.
+
+
+\end{frame}
+
+\begin{frame}[t,fragile]{\textbf{\textbf{The natbib package}}}
+
+
+
+The natbib package provides an option for the $\backslash$bibitem command, i.e. we now use: \textcolor{red}{$\backslash$bibitem[custom text]\{ ref. identifier\}}. Examples:
+\scriptsize
+\begin{varblock}[10cm]{\textbf{Refernce details in input}}
+\vspace{-0.3cm}
+\begin{verbatim}
+\begin{thebibliography}{99}
+\bibitem[Leslie(1985)]{les85}Leslie Lamport, 1985. 
+\LaTeX{} -A Document Preparation...
+\bibitem[Donale(2000)]{don89}Donald E. Knuth, 1989. 
+Typesetting Concrete Mathematics,.....
+\end{thebibliography} 
+\end{verbatim}
+\vspace{-0.3cm}
+\end{varblock}
+
+\begin{varblock}[10cm]{\textbf{Output}}
+\vspace{-0.3cm}
+\begin{verbatim}
+References
+
+Leslie Lamport, 1985. LaTeX -A Document Preparation...
+Donald E. Knuth, 1989. Typesetting Concrete Mathematics,...
+\end{verbatim}
+\vspace{-0.3cm}
+\end{varblock}
+
+\end{frame}
+
+\section{Final Notes}
+
+\begin{frame}{Final Notes}
+
+\justifying
+
+\LaTeX{} simplifies the referencing works of the document. The preceding slides only briefly introduced the referencing using \LaTeX. Following suggestions can be helpful.
+
+\begin{enumerate}
+
+\item Detail at the \href{http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management}{wikipedia} site.\\
+\vspace{0.2cm}
+
+\item Different bibliography management software that can provide output for \LaTeX can be found \href{http://en.wikipedia.org/wiki/Comparison_of_reference_management_software}{here}\\
+\vspace{0.2cm}
+
+\item More packages to manage complex bibliography, e.g. \href{http://ctan.org/pkg/multibib}{multiple bibliography}, \href{http://ctan.org/pkg/chapterbib}{Chapter-wise bibliography}, \href{http://ctan.org/pkg/bibunits}{unit-wise bibliography} etc.
+
+\item A good \LaTeX{} \href{http://www.sharelatex.com/learn/Main_Page}{tutorial}.
+
+\end{enumerate} 
+
+
+\end{frame}
+
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}{ \textbf{Next $\ldots$,}}
+\pagestyle{plain}
+\Huge
+
+\textbf{Cross-referencing, Hyperlinking... \\ \vspace{0.5cm}Last but not least...,}
+
+
+\end{frame}
+
+
+}
+
+
+
+
+
+
+
+

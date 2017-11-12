@@ -1,0 +1,61 @@
+\documentclass{beamer}
+\usepackage{ragged2e}
+\usepackage{ascii}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor,colortbl}
+\usepackage[scale=1]{ccicons}
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true,     
+}
+\usetheme[pageofpages=of,% String used between the current page and the
+                         % total page count.
+          bullet=circle,% Use circles instead of squares for bullets.
+          titleline=true,% Show a line below the frame title.
+          alternativetitlepage=true,% Use the fancy title page.
+          titlepagelogo=fig/logofinal,% Logo for the first page.
+          %watermark=fig/logo,% Watermark used in every page.
+          watermarkheight=20px,% Height of the watermark.
+          watermarkheightmult=100,% The watermark image is 4 times bigger
+                                % than watermarkheight.
+          ]{Torino}
+          
+          
+\definecolor{almond}{rgb}{0.94, 0.87, 0.8}
+\definecolor{gold}{rgb}{0.85,.66,0}
+ \definecolor{khaki}{rgb}{0.941176,0.901961,0.549020}
+\definecolor{saffron}{rgb}{0.96, 0.77, 0.19}
+\definecolor{sand}{rgb}{0.76, 0.7, 0.5}
+\definecolor{ablue}{rgb}{0.94, 0.97, 1.0}
+\definecolor{cgreen}{rgb}{0.0, 0.42, 0.24}
+\setbeamercolor{bgcolor}{fg=black,bg=almond}
+\setbeamercolor{block title}{fg=white,bg=orange!20!black}
+\setbeamercolor{block body}{fg=black,bg=almond}
+
+
+
+\newenvironment<>{varblock}[2][.9\textwidth]{%
+  \setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}}
+
+\author{P. K. Yadav \& K. Kumar }
+\subtitle{\textcolor{black}{\textbf{Session: Bibliography in \LaTeX{}}}}
+\title{\textbf{Workshop on \newline Document typesetting and Processing using \LaTeX{} }\vspace{0.2cm}}
+\institute{Department of Civil Engineering}
+\date{\today\\\vspace{1cm}\ccby}
+
+\addtocounter{framenumber}{-1}
+
+\logo{\includegraphics[width=2cm,height=2cm,keepaspectratio]{fig/logofinal}}
+
+
+\begin{document}
+\include{contentpres5}
+\end{document}
+

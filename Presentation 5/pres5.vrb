@@ -1,0 +1,30 @@
+\frametitle{\textbf {\textbf {The natbib package}}}
+
+
+
+The natbib package provides an option for the $\backslash$bibitem command, i.e. we now use: \textcolor{red}{$\backslash$bibitem[custom text]\{ ref. identifier\}}. Examples:
+\scriptsize
+\begin{varblock}[10cm]{\textbf{Refernce details in input}}
+\vspace{-0.3cm}
+\begin{verbatim}
+\begin{thebibliography}{99}
+\bibitem[Leslie(1985)]{les85}Leslie Lamport, 1985.
+\LaTeX{} -A Document Preparation...
+\bibitem[Donale(2000)]{don89}Donald E. Knuth, 1989.
+Typesetting Concrete Mathematics,.....
+\end{thebibliography}
+\end{verbatim}
+\vspace{-0.3cm}
+\end{varblock}
+
+\begin{varblock}[10cm]{\textbf{Output}}
+\vspace{-0.3cm}
+\begin{verbatim}
+References
+
+Leslie Lamport, 1985. LaTeX -A Document Preparation...
+Donald E. Knuth, 1989. Typesetting Concrete Mathematics,...
+\end{verbatim}
+\vspace{-0.3cm}
+\end{varblock}
+
