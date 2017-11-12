@@ -1,0 +1,34 @@
+\frametitle{\textbf {The first \LaTeX {} code X- The Figure Environment}}
+
+
+\justifying
+\fbox{
+\begin{minipage}{0.3\linewidth}
+\begin{figure}[h]
+\includegraphics[scale=0.2]{fig/logo} %\centering
+\caption{scale = 0.2}
+\end{figure}
+\end{minipage}
+}
+\hfill
+\fbox{
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[h]
+\includegraphics[scale=0.2, height=0.3in, angle= 120]{fig/logo} %\centering
+\caption{scale = 0.2, height= 0.3in, angle= 120}
+\end{figure}
+\end{minipage}
+}
+
+\vfill
+
+\fbox{
+\begin{minipage}{0.6\linewidth}
+\begin{figure}[h]
+\includegraphics[width= 5cm, angle= 180]{fig/logo} %\centering
+\caption{width= 5cm, angle= 180}
+\end{figure}
+\end{minipage}
+}
+
+
