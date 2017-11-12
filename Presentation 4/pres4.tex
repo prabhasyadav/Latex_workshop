@@ -1,0 +1,694 @@
+\documentclass[presentation]{beamer}
+
+\usetheme{Goettingen}
+\setbeamertemplate{navigation symbols}{}
+%\usecolortheme{beaver}
+\usepackage{textpos}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color, colortbl}
+\usepackage{multirow} 
+\usepackage{verbatimbox}
+\usepackage{caption}
+\usepackage[scale=1]{ccicons}
+\usepackage{empheq}
+%\usepackage[ddmmyyyy]{datetime}
+\usepackage{ragged2e}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true,     
+}
+\usepackage[T1]{fontenc}
+\usepackage{twcal}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamerfont{page number in head/foot}{size=\large}
+%\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{footline}[text line]{%
+ \parbox{\linewidth}{\vspace*{-14pt} \includegraphics[width=1.0cm,height=1.2cm,keepaspectratio]{fig/mujlogo4}} \hspace{1.5cm}\insertframenumber/\inserttotalframenumber}
+
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+\definecolor{gold}{rgb}{0.85,.66,0}
+ \definecolor{khaki}{rgb}{0.941176,0.901961,0.549020}
+\definecolor{saffron}{rgb}{0.96, 0.77, 0.19}
+\definecolor{sand}{rgb}{0.76, 0.7, 0.5}
+\definecolor{ablue}{rgb}{0.94, 0.97, 1.0}
+\definecolor{cgreen}{rgb}{0.0, 0.42, 0.24}
+\setbeamercolor{bgcolor}{fg=black,bg=ablue}
+\setbeamercolor{block title}{fg=white,bg=orange!20!black}
+\setbeamercolor{block body}{fg=black,bg=ablue}
+
+\newenvironment<>{varblock}[2][.9\textwidth]{%
+  \setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}}
+
+
+\title[Workshop \LaTeX{}]{\textbf{Workshop on Document typesetting and Processing using \LaTeX}}
+\author[\ccby{}  P. K. Yadav \& K. Kumar
+ ]{\vspace{-0.3cm}\textbf{Session: Equations in \LaTeX}}
+\institute[SET/CE]{\href{http://www.texample.net/tikz/examples/unit-circle/}{
+\includegraphics[scale=0.18]{fig/cover}}\centering\\
+\textit{A unit circle}
+\begin{flushleft}
+Presented by: \textbf{P. K. Yadav \& K. Kumar} \\
+\hspace{1.85cm}\textbf{Department of Civil Engineering} \hspace{1 cm} \today
+\end{flushleft}
+}
+\date{\today}
+
+\begin{document}
+
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}
+\begin{textblock*}{50cm}(0\textwidth,0cm)
+\includegraphics[width=5cm]{fig/logofinal}
+\end{textblock*}
+\vspace{1.2cm}
+
+
+  \titlepage
+  
+  
+\end{frame}
+}
+\addtocounter{framenumber}{-1}
+
+
+
+
+\section{Motivation}
+\begin{frame}[fragile]{Motivation}
+
+
+
+
+\justifying
+Let us start with a quote from the \TeX{} creator.
+
+\begin{quote}
+``\TeX{} is a
+new typesetting system intended for the creation of beautiful books- and especially for books
+that contain a lot of mathematics''
+\end{quote}
+
+
+\textbf{In-line mathematics}/chemical equations are very poorly printed from word processors.\\
+\vspace{0.2cm}
+
+
+The \textbf{numbering and cross-referencing} of mathematical equation still remains complicated in word processors. \\
+\vspace{0.2cm}
+
+
+
+\LaTeX{} solves these. An example:\\
+\vspace{0.2cm}
+
+
+
+%\scriptsize{
+%\begin{verbatim}
+%Using (5.64) and the fact that the
+%$c_n=\langle\psi_n\vert\Psi\rangle$
+%and $d_n^*=\langle X\psi_n\rangle$,
+%the scalar product $\langle X\vert
+%\Psi\rangle$ can be expressed in the
+%way as $\langle X\vert\Psi\rangle=
+%\sum_nd_n^*c_n = \mathbf{d}^\dagger
+%\boldsymbol{\cdot}\mathbf{c}$ where
+%\(\mathbf{c}\) is a column vector
+%with elements $c_n$ and row vector
+%$\mathbf{d}^\dagger$ with elements
+%$d_n^*$.
+%\end{verbatim}
+%}
+
+
+\centering
+\fcolorbox{red}{ablue}{\parbox{8cm}{
+
+Using (5.64) and the fact that the
+$c_n=\langle\psi_n\vert\Psi\rangle$
+and $d_nˆ*=\langle X\psi_n\rangle$,
+the scalar product $\langle X\vert
+\Psi\rangle$ can be expressed in the
+way as $\langle X\vert\Psi\rangle=
+\sum_nd_nˆ*c_n = \mathbf{d}ˆ\dagger
+\boldsymbol{\cdot}\mathbf{c}$ where
+\(\mathbf{c}\) is a column vector
+with elements $c_n$ and row vector
+$\mathbf{d}ˆ\dagger$ with elements
+$d_nˆ*$.
+}}
+
+
+
+\end{frame}
+
+\section{Equation Environment}
+\begin{frame}{\textbf{The equation environment I}}
+
+A mathematical texts contains in-line equation and separate equations. These must be first identified.\\
+\vspace{0.6 cm}
+
+
+Text (e.g. $\sin$ ) and mathematical symbol (e.g. $\beta$) are typed differently (i.e. normal and italic , $\sin\beta$).\\
+\vspace{0.6 cm}
+
+
+The spacing between texts in mathematical equation are
+different from texts in paragraph.\\
+\vspace{0.6 cm}
+
+
+We identify these first.
+
+\end{frame}
+
+
+\begin{frame}[fragile]{\textbf{The equation environment II}}
+
+
+
+\justifying
+Mathematics environments:\\
+\vspace{0.2cm}
+
+
+For \textbf{inline math} typesetting we use: \textcolor{red}{\$...\$}.\\
+\vspace{0.2cm}
+
+
+e.g. \verb|$x^2+y^2= a^2 \times \sin\theta$| will print \\
+\vspace{0.2cm}
+
+\begin{center}
+ \fbox{$x^2+y^2=a^2\times \sin\theta$}
+\end{center}
+
+
+
+For the equations, we use the \textbf{equation} environment, i.e. \textcolor{red}{$\backslash$begin\{equation\}...$\backslash$end\{equation\}}. e.g.\\
+
+
+ \begin{columns}
+ \begin{column}{0.5\textwidth}
+
+\begin{center}
+\small
+    \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=4.5cm]{bgcolor}
+    \vspace{-0.5cm}
+      \begin{verbatim}
+    \begin{equation}
+   x^2+y^2 = a^2 \times 
+   \sin\theta
+    \end{equation}
+           \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+\end{center}
+ \end{column}
+ \hfill
+  \begin{column}{0.3\textwidth}
+  
+  \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=4cm]{bgcolor}
+      \vspace{-0.5cm}
+      \begin{equation}
+        x^2+y^2 = a^2 \times \sin\theta
+         \end{equation}
+ \vspace{-0.7cm}
+   \end{beamercolorbox}
+  \end{column}
+
+ \end{columns}
+
+\vspace{0.2cm}
+Try: \textcolor{red}{$\backslash$begin\{equation$^\ast$\}...$\backslash$end\{equation$^\ast$\}}, what results.\\
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{\textbf{The equation environment III}} {Texts and spaces in maths}
+
+
+
+\justifying
+Mathematics environments:\\
+\vspace{0.2cm}
+Text within the inline maths or eqaution environment can be inserted using \textcolor{red}{$\backslash$textrm\{text\}} specifier. e.g.,
+
+ \begin{columns}
+ \begin{column}{0.4\textwidth}
+
+\begin{center}
+\small
+    \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=4cm]{bgcolor}
+    \vspace{-0.5cm}
+      \begin{verbatim}
+    \begin{equation}
+   x^2+y^2 = a^2  
+   \textrm{for} 
+   a = \sin\theta
+    \end{equation}
+           \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+\end{center}
+ \end{column}
+ \hfill
+  \begin{column}{0.3\textwidth}
+  \small
+  
+  \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=5cm]{bgcolor}
+      \vspace{-0.5cm}
+      \begin{equation}
+        x^2+y^2 = a^2 \textrm{for} a= \sin\theta
+         \end{equation}
+ \vspace{-0.5cm}
+   \end{beamercolorbox}
+  \end{column}
+
+ \end{columns}
+ 
+ \vspace{0.3cm}
+
+Eq (2) is not perfect because we need space between $a^2$, for and $a$. Spaces in the math environment is specified with:
+
+
+
+
+
+
+%\fcolorbox{red}{white}{\parbox{8cm}{Using (5.64) and the fact that the
+%$c_n=\langle\psi_n\vert\Psi\rangle$
+%and $d_nˆ*=\langle X\psi_n\rangle$,
+%the scalar product $\langle X\vert
+%\Psi\rangle$ can be expressed in the}}
+
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]{\textbf{The equation environment IV}}
+
+
+
+\textbf{Spaces} in the math environment is specified with:
+
+\begin{columns}
+ \begin{column}{0.5\textwidth}
+ 
+ \begin{varblock}[3.8cm]{\textbf{Space specification}}
+ 
+\begin{tabular}{|l|l|}
+\hline 
+\textcolor{red}{\textbf{$\backslash$,}} & small space\\
+\hline\hline
+\textcolor{red}{\textbf{$\backslash$:}} & medium space\\
+\hline\hline
+\textcolor{red}{\textbf{$\backslash$\;}} & large space\\
+\hline\hline
+\textcolor{red}{\textbf{$\backslash$!}} & negative space\\
+\hline
+
+\end{tabular}
+ 
+ \end{varblock}
+ \end{column}
+ \end{columns}
+
+\vspace{0.3cm}
+Our examples can be modified as:
+
+ \begin{columns}
+ \begin{column}{0.4\textwidth}
+
+\begin{center}
+\small
+    \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=4cm]{bgcolor}
+    \vspace{-0.5cm}
+      \begin{verbatim}
+    \begin{equation}
+   x^2+y^2 = a^2\;  
+   \textrm{for} \; 
+   a = \sin\theta
+    \end{equation}
+           \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+\end{center}
+ \end{column}
+ \hfill
+  \begin{column}{0.3\textwidth}
+  \small
+  
+  \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=5cm]{bgcolor}
+      \vspace{-0.5cm}
+      \begin{equation}
+        x^2+y^2 = a^2\; \textrm{for}\; a= \sin\theta
+         \end{equation}
+ \vspace{-0.4cm}
+   \end{beamercolorbox}
+  \end{column}
+
+ \end{columns}
+ 
+ \vspace{0.3cm}
+
+\end{frame}
+
+\section{Maths Typsetting Examples}
+
+\begin{frame}[fragile]{\textbf{Examples: Equation without numbers}}
+
+
+ \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=10cm]{bgcolor}
+    \vspace{-0.5cm}
+      \begin{verbatim}
+\begin{equation*}
+    \left(\int_{-\infty}^{\infty} e^{-x^2}\right)=
+    \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+    e^{-(x^2+y^2)}dx\,dy
+\end{equation*}
+           \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+\vspace{0.3cm}
+results to: 
+
+\begin{empheq}[box=\widefbox]{equation*}
+    \left(\int_{-\infty}^{\infty} e^{-x^2}\right)=
+    \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+    e^{-(x^2+y^2)}dx\,dy
+\end{empheq}
+
+The $\ast$ after equation avoids numbering of equation. The $\backslash$left( ... $\backslash$right) produces the perfect brackets.
+
+\end{frame}
+
+\begin{frame}[fragile]{\textbf{Examples II: Framed and Roots}}
+\textbf{\textcolor{red}{Framed}}\\
+\vspace{0.2cm}
+
+\small{
+ \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=9cm]{bgcolor}
+    \vspace{-0.5cm}
+      \begin{verbatim}
+\begin{equation}
+\boxed{\int_0^\infty f(x)\,{\textrm{d}}x
+\approx\sum_{i=1}^nw_i{\textrm{e} }^{x_i}f(x_i)}
+\end{equation}
+           \end{verbatim}
+           \vspace{-0.3cm}
+    \end{beamercolorbox}
+}
+results to: 
+ \vspace{-0.2cm}
+\begin{equation*}
+\boxed{\int_0^\infty f(x)\,{\textrm{d}}x
+\approx\sum_{i=1}^nw_i{\textrm{e} }^{x_i}f(x_i)}
+\end{equation*}
+
+\textbf{\textcolor{red}{Roots}}\\
+\vspace{0.1cm}
+
+\small{
+ \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=7.5cm]{bgcolor}
+    \vspace{-0.5cm}
+      \begin{verbatim}
+\begin{equation}
+\sqrt[n]{\frac{x^n-y^n}{1+u^{2n}}}
+\end{equation}
+           \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+  }  
+ 
+    results to: 
+ \vspace{-0.1cm}
+\begin{equation*}
+\boxed{\sqrt[n]{\frac{x^n-y^n}{1+u^{2n}}}}
+\end{equation*}
+
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]{\textbf{Examples III: Array and Cases}}
+
+\textbf{\textcolor{red}{Array}}
+
+
+{\scriptsize
+ \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=9cm]{bgcolor}
+    \vspace{-0.5cm}
+    \begin{verbatim}
+    \begin{equation}
+      \begin{array}{lcll}
+\psi(x,t) &=& A({\textrm{e}^{\textrm{i}kx}-{\textrm{e}^
+{\textrm{-i}kx}e^{\textrm{-i}\omega t}&\\
+&=& D\sin kxe^{\textrm{-i}\omega t}, & D = 2\textrm{i}A
+           \end{array}
+            \end{equation}
+            \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+}
+ \vspace{0.1cm}
+    results to: 
+ \vspace{-0.2cm}
+\begin{equation*}
+ \begin{array}{lcll}
+\psi(x,t) &=& A({\textrm{e}^{\textrm{i}kx}}-{\textrm{e}^
+{\textrm{-i}kx}}e^{\textrm{-i}\omega t}&\\
+&=& D\sin kxe^{\textrm{-i}\omega t}, & D = 2\textrm{i}A
+           \end{array}
+\end{equation*}
+
+
+\textbf{\textcolor{red}{Cases, using ``amsmath'' package}}
+
+
+{\scriptsize
+ \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=9cm]{bgcolor}
+    \vspace{-0.5cm}
+    \begin{verbatim}
+      \begin{equation}
+f(n) = \begin{cases} n/2 &\textrm{if } n = 0 \\ 
+(3n +1)/2 & \textrm{if } n \neq 1. \end{cases} 
+           \end{equation}
+            \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+}
+ \vspace{0.1cm}
+    results to: 
+ \vspace{-0.2cm}
+\begin{equation*}
+ f(n) = \begin{cases} n/2 &\textrm{if } n = 0 \\ 
+ (3n +1)/2 & \textrm{if } n \neq 1. \end{cases} 
+\end{equation*}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{\textbf{Examples IV: Align and Substack}}
+
+
+\textbf{\textcolor{red}{Align}}, using ``amsmath'' package, environment is used for two or more equations when vertical alignment is desired.
+
+{\small
+ \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=8cm]{bgcolor}
+    \vspace{-0.5cm}
+    \begin{verbatim}
+   \begin{align*}
+   u &= \arctan x & dv &= 1 \, dx
+   \\ du &= \frac{1}{1 + x^2} dx & v &= x.
+   \end{align*}
+            \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+ \vspace{0.1cm}
+    results to: 
+ \vspace{-0.4cm}
+\begin{align*}
+u &= \arctan x & dv &= 1 \, dx
+\\ du &= \frac{1}{1 + x^2} dx & v &= x.
+\end{align*}
+}
+   \vspace{-0.5cm}
+\textbf{\textcolor{red}{substack}}
+
+{\small
+ \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=8cm]{bgcolor}
+    \vspace{-0.5cm}
+    \begin{verbatim}
+  \begin{equation*}
+  \sum_{\substack{0\leq i\leq m\\ 0jn}}
+  \end{equation*}
+            \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+ \vspace{0.1cm}
+    results to: 
+ \vspace{-0.4cm}
+\begin{equation*}
+\sum_{\substack{0\leq i\leq m\\ 0<j<n}}
+\end{equation*}
+ \vspace{-0.2cm}
+\begin{flushright}
+\textbf{How about substack on the top of sum symbol?}
+\end{flushright}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]{\textbf{Examples V: Split Environment}}
+
+
+
+\textbf{\textcolor{red}{Split}}, using ``amsmath'' package, is for single equations that are too long to fit on a single line and hence
+must be split into multiple lines. 
+
+
+ \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=8cm]{bgcolor}
+    \vspace{-0.2cm}
+    \begin{verbatim}
+   \begin{equation}
+   \begin{split}
+   (x+y+z)^2 & = x^2+xy+xz \\
+   & + xy + y^2 + yz \\
+   & + xz + yz + z^2
+   \end{split}
+   \end{equation}
+            \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+ \vspace{0.1cm}
+    results to:   
+ \fbox{
+ \parbox{5cm}{
+   \vspace{-0.4cm}
+ \begin{equation*}
+  \begin{split} 
+   (x+y+z)^2 & = x^2+xy+xz \\
+   & + xy + y^2 + yz \\
+   & + xz + yz + z^2
+   \end{split}
+   \end{equation*}
+      \vspace{-0.4cm}
+}}
+
+\end{frame}
+
+\begin{frame}[fragile]{\textbf{Examples VI: Matrices environment}}
+Matrix can be represented in many ways. amsmath package provide several options:
+\small
+ \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=9.5cm]{bgcolor}
+    \vspace{-0.3cm}
+    \begin{verbatim}
+  \begin{gather*}
+  \begin{matrix} 0 & 1\\ 1 & 0 \end{matrix}\qquad
+  \begin{pmatrix} 0 & -i\\ i & 0 \end{pmatrix}\qquad
+  \begin{bmatrix} a & b\\ c & d \end{bmatrix}\qquad
+  \begin{vmatrix} 0 & 1\\ -1 & 0 \end{vmatrix}\qquad
+  \begin{Vmatrix} f & g\\ e & v \end{Vmatrix}
+  \end{gather*}
+            \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+ \vspace{0.1cm}
+    results to:   \\
+     \vspace{0.3cm}
+     
+     
+ \fbox{
+ \parbox{9cm}{
+   \vspace{-0.4cm}
+   \begin{gather*}
+   \begin{matrix} 0 & 1\\ 1 & 0 \end{matrix}\qquad
+   \begin{pmatrix} 0 & -i\\ i & 0 \end{pmatrix}\qquad
+   \begin{bmatrix} a & b\\ c & d \end{bmatrix}\qquad
+   \begin{vmatrix} 0 & 1\\ -1 & 0 \end{vmatrix}\qquad
+   \begin{Vmatrix} f & g\\ e & v \end{Vmatrix}
+   \end{gather*}
+      \vspace{-0.4cm}
+}}
+
+   \vspace{0.3cm}
+     
+
+The \textbf{gather environment} gathers and centers equations.\textbf{$\mathbf{\backslash}$qquad} is used for large spacing. 
+
+\end{frame}
+
+
+\section{End Remarks}
+
+\begin{frame}{End Remarks}
+
+\justifying
+
+Math mode in \LaTeX{} is quite like an art than writing a mere equation. For advancement one may consider: 
+\vspace{0.3cm}
+
+\begin{enumerate}
+
+\item \href{http://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics}{Wikipedia} provides a quite comprehensive detail on advanced mathematics typesetting.
+\vspace{0.3cm}
+
+\item An exhaustive list of mathematical symbol in \LaTeX{}, can be found \href{http://www.ctan.org/tex-archive/info/symbols/comprehensive}{here}, and tool to find the proper symbol can be found \href{http://detexify.kirelabs.org/classify.html}{here (online tool)}
+\vspace{0.3cm}
+
+\item Tools for math typesetting can be found \href{http://latexeqedit.sourceforge.net/index.php}{here} and \href{http://www.sciweavers.org/free-online-latex-equation-editor}{online tool here}.
+
+\item A very nice \LaTeX{} review for practice can be found \href{http://www.sharelatex.com/learn/Main_Page}{here}.
+\end{enumerate}
+
+
+
+
+\end{frame}
+
+
+
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}{ \textbf{Next $\ldots$,}}
+\pagestyle{plain}
+\Huge
+
+\textbf{Bibliography, Cross-referencing... \\ \vspace{0.5cm}Further improve our \LaTeX{} document.}
+
+
+\end{frame}
+
+
+
+
+
+}
+
+
+\end{document}

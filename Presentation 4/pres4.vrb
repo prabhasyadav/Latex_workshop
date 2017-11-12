@@ -1,0 +1,40 @@
+\frametitle{\textbf {Examples VI: Matrices environment}}
+Matrix can be represented in many ways. amsmath package provide several options:
+\small
+ \begin{beamercolorbox}[rounded=true, center, shadow=true,wd=9.5cm]{bgcolor}
+    \vspace{-0.3cm}
+    \begin{verbatim}
+  \begin{gather*}
+  \begin{matrix} 0 & 1\\ 1 & 0 \end{matrix}\qquad
+  \begin{pmatrix} 0 & -i\\ i & 0 \end{pmatrix}\qquad
+  \begin{bmatrix} a & b\\ c & d \end{bmatrix}\qquad
+  \begin{vmatrix} 0 & 1\\ -1 & 0 \end{vmatrix}\qquad
+  \begin{Vmatrix} f & g\\ e & v \end{Vmatrix}
+  \end{gather*}
+            \end{verbatim}
+           \vspace{-0.5cm}
+    \end{beamercolorbox}
+
+ \vspace{0.1cm}
+    results to:   \\
+     \vspace{0.3cm}
+
+
+ \fbox{
+ \parbox{9cm}{
+   \vspace{-0.4cm}
+   \begin{gather*}
+   \begin{matrix} 0 & 1\\ 1 & 0 \end{matrix}\qquad
+   \begin{pmatrix} 0 & -i\\ i & 0 \end{pmatrix}\qquad
+   \begin{bmatrix} a & b\\ c & d \end{bmatrix}\qquad
+   \begin{vmatrix} 0 & 1\\ -1 & 0 \end{vmatrix}\qquad
+   \begin{Vmatrix} f & g\\ e & v \end{Vmatrix}
+   \end{gather*}
+      \vspace{-0.4cm}
+}}
+
+   \vspace{0.3cm}
+
+
+The \textbf{gather environment} gathers and centers equations.\textbf{$\mathbf{\backslash}$qquad} is used for large spacing.
+
