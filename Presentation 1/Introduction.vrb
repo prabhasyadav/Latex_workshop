@@ -1,0 +1,18 @@
+\frametitle{\textbf {Disadvantage of \LaTeX {} II}}
+\setbeamercovered{transparent}
+\begin{enumerate}[<+->]\setcounter{enumi}{1}
+
+\item Distributed information on modules
+\vspace{0.2cm}
+\item Absence of collaborative editing
+\vspace{0.2cm}
+\item Grammatical check is missing
+\vspace{0.2cm}
+\item Layout changes are difficult
+\item Adding picture and table is relatively difficult compared to MS Word, although better output is obtained. \\
+
+\end{enumerate}
+\pause
+\vspace{0.2cm}
+Now that we have decided to use \LaTeX{}, let us get started with first, with the word TEX.
+

@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Motivation}{2}{0}{1}
+\beamer@sectionintoc {2}{Typographical Quality}{3}{0}{2}
+\beamer@sectionintoc {3}{Other Advantage of \LaTeX }{9}{0}{3}
+\beamer@sectionintoc {4}{Disadvantage of \LaTeX }{15}{0}{4}
+\beamer@sectionintoc {5}{Introducing \LaTeX {}}{23}{0}{5}
+\beamer@sectionintoc {6}{Getting Started with \LaTeX {}}{24}{0}{6}
