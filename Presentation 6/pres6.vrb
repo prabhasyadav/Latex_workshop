@@ -1,0 +1,24 @@
+\frametitle{End Reamarks}\framesubtitle {}
+\begin{block}{}
+
+\justifying
+Cross-referencing in \LaTeX{} is simple and very extensive. Several additional packages further extends cross-referencing within and to the internet. Following references can be used for advancing knowledge.\\
+\vspace{0.2cm}
+
+
+
+\begin{itemize}
+
+\item The hyperref package is very extensible, detail can be found \href{http://en.wikibooks.org/wiki/LaTeX/Hyperlinks}{here}.\\
+\vspace{0.2cm}
+
+\item Some addition packages for cross-referencing are: \href{http://www.ctan.org/pkg/varioref}{varioref, for page referencing}, \href{http://www.ctan.org/pkg/nameref}{nameref, for section naming}, \href{http://www.ctan.org/pkg/cleveref}{intelligent cross-referencing} etc.\\
+\vspace{0.2cm}
+
+\item Good tutorial on cross-referencing can be found \href{http://www.tug.org/tutorials/tugindia/chap12-scr.pdf}{here} and \href{http://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing#tag}{here}.\\
+\vspace{0.2cm}
+
+\end{itemize}
+
+
+\end{block}

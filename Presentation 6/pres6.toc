@@ -1,0 +1,5 @@
+\select@language {english}
+\beamer@sectionintoc {1}{Motivation}{2}{0}{1}
+\beamer@sectionintoc {2}{The Label-Ref. thing}{3}{0}{2}
+\beamer@sectionintoc {3}{Useful Packages}{6}{0}{3}
+\beamer@sectionintoc {4}{End Remarks}{8}{0}{4}
